@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      href="https://dashboard.snapcraft.io/site_media/appmedia/2019/02/logo.svg.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="stream.js"></script>
+
+    <link rel="stylesheet" href="stream.css" />
+    <title>Feed</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div id="main">
+      <div id="nav">
+        <img
+          id="bar"
+          src="https://img.icons8.com/color/48/000000/menu--v4.png"
+        />
+
+        <img
+          id="logo"
+          src="https://www.bitrix24.net/bitrix/templates/new/images/bitrix24-logo-en.svg"
+          alt=""
+        />
+        <div id="pen" class="header-logo-block-settings-item"></div>
+        <div id="search" class="mt-3 ml-5">
+          <p class="ml-4 mt-[2px]">find</p>
+          <svg
+            class="ml-7 mt-1"
+            id="seachSvg"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="20"
+            height="20"
+            viewBox="0 0 172 172"
+            style="fill: #000000"
+          >
+            <g
+              fill="none"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+              style="mix-blend-mode: normal"
+            >
+              <path d="M0,172v-172h172v172z" fill="none"></path>
+              <g fill="#ffffff">
+                <path
+                  d="M72.24,10.32c-32.33062,0 -58.48,26.14938 -58.48,58.48c0,32.33063 26.14938,58.48 58.48,58.48c11.54281,0 22.22563,-3.38625 31.2825,-9.1375l42.2475,42.2475l14.62,-14.62l-41.71,-41.6025c7.49813,-9.83625 12.04,-22.02406 12.04,-35.3675c0,-32.33062 -26.14937,-58.48 -58.48,-58.48zM72.24,24.08c24.76531,0 44.72,19.95469 44.72,44.72c0,24.76531 -19.95469,44.72 -44.72,44.72c-24.76531,0 -44.72,-19.95469 -44.72,-44.72c0,-24.76531 19.95469,-44.72 44.72,-44.72z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <p id="clock" class="text-[#fff] text-[30px] font-thin ml-9 mt-1"></p>
+        </div>
+        <div class="flex">
+          <img
+            id="userSvg"
+            src="data:image/png;base64,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"
+          />
+          <h2 class="text-[#fff] mt-[12px] ml-4">User Name</h2>
+        </div>
+        <div id="Upgrade" class="text-[#fff] ml-[50px]">
+          <p>Upgrade</p>
+        </div>
+        <div id="Invite" class="text-[#fff]">
+          <p>Invite</p>
+        </div>
+      </div>
+
+      <!-- sideBar -->
+      <div class="flex flex-row">
+        <div id="sidebar" class="h-[669px]">
+          <div id="sidebarIn" class="ml-2 mt-2 bg-[rgba(255,255,255,.1)]">
+            <p class="text-[#fff] font-thin pl-2 pt-2 hover:bg-gray-700">
+              Collbration ^
+            </p>
+            <p class="text-[#fff] pl-3 pt-3">
+              <span class="bg-[rgba(255,255,255,.1)] p-2 rounded-xl">
+                feed</span
+              >
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Chat and Call
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Calender
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Online Documnet
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Bitrix24 Drive
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Webmail
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Workgroups
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              Task and Project
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              CRM
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              Marketing
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              Company
+            </p>
+          </div>
+          <div id="sidebarIn" class="ml-2 mt-2 bg-[rgba(255,255,255,.1)] mt-4">
+            <p class="text-[#fff] font-thin pl-2 pt-2 hover:bg-gray-700">
+              Applications
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Market
+            </p>
+
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Developer Resources
+            </p>
+          </div>
+        </div>
+
+        <div id="feed">
+          <div id="addMsg">
+            <div id="msgnames">
+              <p
+                id="msg"
+                class="ml-10 text-[#2067b0] font-semibold text-[14px] mt-1"
+              >
+                MESSAGE
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                TASK
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                EVENT
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                POLL
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                MORE
+              </p>
+            </div>
+            <p class="mt-[20px] ml-[30px] text-[20px] font-light text-[gray]">
+              Send message …
+            </p>
+          </div>
+          <div class="flex flex-row">
+            <p class="text-[white] font-thin mt-[20px] ml-[40px] text-[30px]">
+              Feed
+            </p>
+            <div id="search2" class="mt-6 ml-[400px]">
+              <p class="ml-5 mt-[8px]">filter and search</p>
+              <svg
+                class="ml-[50px] mt-3"
+                id="seachSvg"
+                xmlns="http://www.w3.org/2000/svg"
+                x="0px"
+                y="0px"
+                width="20"
+                height="20"
+                viewBox="0 0 172 172"
+                style="fill: #000000"
+              >
+                <g
+                  fill="none"
+                  fill-rule="nonzero"
+                  stroke="none"
+                  stroke-width="1"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                  stroke-miterlimit="10"
+                  stroke-dasharray=""
+                  stroke-dashoffset="0"
+                  font-family="none"
+                  font-weight="none"
+                  font-size="none"
+                  text-anchor="none"
+                  style="mix-blend-mode: normal"
+                >
+                  <path d="M0,172v-172h172v172z" fill="none"></path>
+                  <g fill="#8c8c8c">
+                    <path
+                      d="M72.24,10.32c-32.33062,0 -58.48,26.14938 -58.48,58.48c0,32.33063 26.14938,58.48 58.48,58.48c11.54281,0 22.22563,-3.38625 31.2825,-9.1375l42.2475,42.2475l14.62,-14.62l-41.71,-41.6025c7.49813,-9.83625 12.04,-22.02406 12.04,-35.3675c0,-32.33062 -26.14937,-58.48 -58.48,-58.48zM72.24,24.08c24.76531,0 44.72,19.95469 44.72,44.72c0,24.76531 -19.95469,44.72 -44.72,44.72c-24.76531,0 -44.72,-19.95469 -44.72,-44.72c0,-24.76531 19.95469,-44.72 44.72,-44.72z"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="w-[746px] bg-[#fff] h-[750px] mt-5 mb-[50px]">
+            <div class="flex flex-row">
+              <img
+                class="ml-[20px] pt-[20px]"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAABmJLR0QA/wD/AP+gvaeTAAAD0ElEQVRoge3aPYxVRRjG8R8srCiaoOtuJIsS/KTUSjQUflAbkMKPykQFE1wlMeJHLIw2xrhCbayJ2tkYY4ONumhELUwwojZqkJWCZUlY2d1rMfcmcDnn3HNn5ly2uP9kmj33zPM+55yZfd+ZYciQIUOGrFxWNdz/TXgI92IrbsUYrm1fn8dp/I7jmMERnGw4rqyM4QV8h1Zk+xZT7b5WLJtwCOfEG+1u8ziIyQH66MlavIiz8hntbufwJq4akKdS7sKPmjPa3X7AnQNxVsBuzb7VsjaHXQPwdwlP4UJi4CltEc817rLN3gEYqtumGvZqt/B0r7TRi9/0zqbM3o4zK8BkdzsrJDVZGZU+G8/gGeHBrcc1eBhHM5g+Jvx7zMarCcEsCZlXWRo7ii+wnKDRwsu5zE4KGU9sIK/V1NkkGE/5tDemGO1wKCGI41jTh9Z1+CtBbzraZZsxabnxgQjNdxL05vUoOFb3EH9SmFxi+TLink8T9NbjiYT7k0q8FjZEaE4mah6N0ESYAFJnzn7Gb4fRRM1lTJR1XvVJPyB9RSSmgL8+UXMVHiy7WGV4W6Iw3Dege7opjb3KcI507ZaIezZn0I2K/TdpY6mF8QjdiQy6v5Z1XvWGY2bYbm4e0D3dRM0DC9Kf9GGs60NzHT7KoHv+Shlu4ZU+NFOKlGTDpzOJ/4yRGnoj7d/m0JyNMXwik3gL+2vo7c+oVzppVfF5xgAWsKNCa4d8Q6iFz8qEqmbpXyqu9csotldc397+TS5KY68yPJMxgEHzTdmFKsNHhM8jF1Xj6kRGnZa4shRhFy91PC0JKxFVhchqYdNsKYNe6dutw1Sk6LKwD/SW/vLarXhb2grpvkivCOVdPwt4J/G6PAXAZryBf/rQ77nEU4eDNcU+kCf/7mYDPqwZw3s5BOss076bQ6gH0z1imBOOWGThQIXQMfVSx1RG8FNFHC/lFFsrGCsSamwzq4BHS2L4Xs2tll7LtB0u4HFhdb+b/2r2kYOFgr/N4TEhxuzscvl26Xk83YRYF3tdnm8v4pGmhfco/qwO48YG9MbxSYHeMp5tQK+QPYo3xk8JZV6O0zZXCxPRvwU6iwZotsNOYfwUve0/hWNGWyL6vU3Itv4u6fuMhM84daH9DnyMe0qud1LMr/C1UCTMCm+NMATG2/3cL5SJd1fEdUyYoHIWG32zRjiYVva2c7TOwbScNXMyG/G+tM3zotx4WsYMqgnG8LywgBCzGbcslHj7cEPu4Jo+PjwhbGxtE0q/LcKYvfj48Cz+cOnx4VMNxzVkyJAhQ1Yk/wPpCQGDQkClsAAAAABJRU5ErkJggg=="
+              />
+              <div class="flex flex-col">
+                <p class="text-[#2067b0] font-bold mt-[28px] ml-[10px]">
+                  cisaxo3491@1uscare.com
+                </p>
+                <p class="text-[gray] font-light text-[12px] ml-[10px]">
+                  3 September 12:48 pm
+                </p>
+                <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
+              </div>
+            </div>
+            <div class="ml-[83px] -mt-2">
+              <p class="font-bold p-2 text-[14px]">Welcome to Bitrix24!</p>
+            </div>
+            <div class="flex flex-col ml-[83px] mt-[20px]">
+              <iframe
+                width="630"
+                height="380"
+                src="https://www.youtube.com/embed/tAMiCw-5MJE"
+              >
+              </iframe>
+              <p class="pr-[20px] mt-[20px] text-[15px] font-light mb-9">
+                Hurray! You are about to get 1000% more productive with
+                Bitrix24. Please watch this 1-minute video to learn what
+                Bitrix24 is about, how to invite your colleagues and where to
+                find help, if you need it.
+              </p>
+              <div id="border-bottom"></div>
+              <div class="likes flex flex-row mt-[20px]">
+                <p class="font-light text-[14px] text-[gray] cursor-pointer">
+                  Like
+                </p>
+                <p
+                  class="ml-[10px] font-light text-[14px] text-[gray] cursor-pointer"
+                >
+                  Comment
+                </p>
+                <p
+                  class="ml-[10px] font-light text-[14px] text-[gray] cursor-pointer"
+                >
+                  Unfollow
+                </p>
+                <p
+                  class="ml-[10px] font-light text-[14px] text-[gray] cursor-pointer"
+                >
+                  More
+                </p>
+              </div>
+              <div class="comment-box flex flex-row">
+                <img
+                  class="ml-[5px] pt-[20px]"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAACeElEQVRYhe3Yu2sUQQDH8U80YowaBRWjNiqeiI9EK2sDCpJaOwVBrawtRAQbhZBOEBTzT2i00sRGExvfj0Z8omKiIKjE+CAWeweXvb1jZveCCPnBVDvzne/uzszOLLOZzb9NS4G2HehFD7qxFkvL177gFe5jCFfxtUBfUdmIAXzHVGD5jksozaTYAvTjV4RYuvxEH9qaLVfCowJi6TKCVc2S24GxJspVylt0FZUrzZBctWRnXrkF4l7rS8lsvYmJiHYjmJ9HsD+wgzHsTbXdIHk6oZKnY+U2Cputv7GzDqMFxwIFv4p81QOB4MEA1nAg63yoXIfwRfhUAO94IOsbFqUbz8kA9qI98GZeB9T5EMhaWO57WrIEewKBsCKgzsoIXk3fWYLdEcBNTapTt+8swXURwLsBde5F8Gr6zhLsiADuxrwG1+dhTwRvSUilSXGfqwMNWAcjWT9CBMcjoY9lz/p2PIlkfQwRvBMJncK5DM65HJyRNCRrDD4IuYtUspaSmOWlbt9ZgkM5wDV3jtEcnBshlRYL+9RN4DL2NWDtxxVh26/MT129XGoAeocj4pajDhzF+wbcixE8JckBJw15iGUxoFSWS2Z9mjuJ9bGwvhTkD7YUkKtka5lVzT6bB9QmGfwVyFO0NkGwFc+quLfk3PKTHA2rt+7XsbqA3BrJKlHhvVHg0FRJl+mS4ziEuRGMVhzGp5TctqJylXSa/rqn8BwnsFn2P54WyZg9iReptrc14cmlM19y+vqmdhZ+kizMg+Uyis8Z9SZxRoExF5JOyQEnS7TRInxBjqWkyO+3RZIzxC5sl2w2q3+/vZRsVodxrSw5m9n8d/kL+vqsO8eROt0AAAAASUVORK5CYII="
+                />
+                <div class="mt-6 ml-[10px] mr-[30px] comment-input border">
+                  <p class="ml-5 mt-[8px] font-light text-[13px]">
+                    Add Comment
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-[250px] h-[658px] ml-2 mt-3">
+          <div class="h-[80px] bg-[#fff] flex flex-row">
+            <img
+              class="h-[60px] mt-2 m-3"
+              src="https://b24-8q3mv5.bitrix24.in/bitrix/components/bitrix/intranet.ustat.online/templates/.default/images/intranet-ustat-online-circle.gif"
+              alt=""
+            />
+            <p class="absolute mt-3 text-[30px] ml-8">1</p>
+            <img
+              class="ml-[5px] pt-[20px] w-[30px] h-[50px]"
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAABKUlEQVQ4jdXTsS9DURTH8U8pFgn/AHZt/wx/gZiEDmarmYGNaCrs/BnFKLF00JqYrBIEi4TU8G7l5vW+YuMkZzjnfs/vvvPOufxnq6GBLl6Dd7GP6m+EJnCID/QK/B0HGP+J2PkQobyffSd6lCi6wjo28JY4bxaJ1RJtPmA6YmbxmGi/0gdGIngtF8MlnqL4Dhc5ZjTUDgguJL56MpGbSuS+amPBmQQ4hlIUl0Iub3OJnGfpSS5GzFIB85wSvC6A2xHTLmA6fSBuuZW45B7HUXwScnlL1arKVqAne2arKCe4MuqB6a/NfEqQ7Dn1sFkERLYV2MYwaBynsoVeNriXQm5FtuAt6akPiDZlrdxgW9ZiHTu4DWeNn4jFVsGebIIvwTvYNeSf/X37BIM+biKf3mYSAAAAAElFTkSuQmCC"
+            />
+          </div>
+          <div class="h-[40px] w-full bg-[#2fc7f7] mt-4 flex flex-row">
+            <p class="font-bold text-[14px] ml-[5px] mt-2 text-[#fff]">
+              COMPANY PULSE
+            </p>
+            <div class="bg-[#fff] m-1 w-[55px]">
+              <p class="text-[#000] ml-[20px] mt-1">0</p>
+            </div>
+            <div class="bg-[#fff] my-1 mr-[1px] w-[55px]">
+              <p class="text-[#2fc7f7] ml-[12px] mt-1">0%</p>
+            </div>
+          </div>
+          <div>
+            <div class="h-[40px] w-full bg-[#2fc7f7] mt-4 flex flex-row">
+              <p class="font-bold text-[13px] ml-[30px] mt-2 text-[#fff]">
+                MY TASKS
+              </p>
+            </div>
+            <div
+              class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                Ongoing
+              </p>
+              <p class="text-[#000] ml-[51%] mt-1 text-[20px] font-light">0</p>
+            </div>
+            <div
+              class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                Assisting
+              </p>
+              <p class="text-[#000] ml-[50%] mt-1 text-[20px] font-light">0</p>
+            </div>
+            <div
+              class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                Set by me
+              </p>
+              <p class="text-[#000] ml-[48%] mt-1 text-[20px] font-light">0</p>
+            </div>
+            <div
+              class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                Following
+              </p>
+              <p class="text-[#000] ml-[49%] mt-1 text-[20px] font-light">0</p>
+            </div>
+          </div>
+          <div>
+            <div class="h-[40px] w-full bg-[#47e4c2] mt-4 flex flex-row">
+              <p class="font-bold text-[13px] ml-[30px] mt-2 text-[#fff]">
+                POPULAR POSTS
+              </p>
+            </div>
+
+            <div
+              class="h-[80px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <img
+                class="ml-[10px] mt-[10px] w-[50px] h-[50px] ml-["
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAABKUlEQVQ4jdXTsS9DURTH8U8pFgn/AHZt/wx/gZiEDmarmYGNaCrs/BnFKLF00JqYrBIEi4TU8G7l5vW+YuMkZzjnfs/vvvPOufxnq6GBLl6Dd7GP6m+EJnCID/QK/B0HGP+J2PkQobyffSd6lCi6wjo28JY4bxaJ1RJtPmA6YmbxmGi/0gdGIngtF8MlnqL4Dhc5ZjTUDgguJL56MpGbSuS+amPBmQQ4hlIUl0Iub3OJnGfpSS5GzFIB85wSvC6A2xHTLmA6fSBuuZW45B7HUXwScnlL1arKVqAne2arKCe4MuqB6a/NfEqQ7Dn1sFkERLYV2MYwaBynsoVeNriXQm5FtuAt6akPiDZlrdxgW9ZiHTu4DWeNn4jFVsGebIIvwTvYNeSf/X37BIM+biKf3mYSAAAAAElFTkSuQmCC"
+              />
+              <div class="flex flex-col">
+                <p
+                  class="text-[#2067b0] font-bold text-[14px] mt-[10px] ml-[5px]"
+                >
+                  cisaxo3491@1uscare.com
+                </p>
+                <p class="text-[blue] font-light text-[12px] ml-[10px]">
+                  Welcome To Bitrix
+                </p>
+                <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="h-[40px] w-full bg-[#47e4c2] mt-4 flex flex-row">
+              <p class="font-bold text-[14px] ml-[19px] mt-2 text-[#fff]">
+                DESKTOP CLIENT
+              </p>
+            </div>
+
+            <div
+              class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+            >
+              <div class="flex flex-row">
+                <p
+                  class="text-[gray] font-bold text-[14px] mt-[10px] ml-[20px]"
+                >
+                  MAC OS
+                </p>
+                <p
+                  class="text-[gray] font-bold text-[14px] mt-[10px] ml-[20px]"
+                >
+                  WINDOWS
+                </p>
+                <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
