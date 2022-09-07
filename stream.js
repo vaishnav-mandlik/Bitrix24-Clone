@@ -19,9 +19,9 @@ function currentTime() {
 
   let time = hh + ":" + mm + " " + session;
   clock.innerText = time;
-  console.log(time);
+
+  let t = setTimeout(function () {
+    currentTime();
+  }, 60000);
 }
 currentTime();
-let t = setTimeout(function () {
-  currentTime();
-}, 60000);
