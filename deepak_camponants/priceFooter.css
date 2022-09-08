@@ -1,0 +1,89 @@
+.footer{
+    background-color: #36b7f4;
+    padding: 40px 5%;
+    font-size: 1rem;
+    bottom: 0px;
+    
+}
+.foot-head{
+    color: #fff;
+    opacity: .7;
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.foot-list{
+    list-style-type: none;
+    padding: 0;
+    
+}
+.foot-list li a{
+    color: #fff;
+    font-weight: 400;
+    line-height: 2;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+
+}
+.horz-line{
+    border-top: 1px solid white;
+    width: 100%;
+    align-items: center;
+}
+
+.foot-bottom{
+    padding: 20px;
+}
+.foot-about-list{
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+}
+.foot-about-list li a{
+    color: #fff;
+    opacity: 0.8;
+    margin: 0 15px 0 0;
+    text-transform: uppercase;
+    line-height: 1;
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+.copyright{
+    color: #fff;
+    opacity: 0.8;
+    margin: 0 15px 0 0;
+    line-height: 2;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+.app-div{
+    display: flex;
+}
+.foot-about-list svg{
+    fill: #fff;
+    color: #fff;
+    width: auto;
+    height: 22px;
+}
+.app-icon{
+    margin:  10px;
+}
+.social{
+justify-content: flex-end;
+margin: auto;
+}
+/* for mobile screen */
+@media screen and (max-width:992px){
+div#order1 {
+    order : 1;
+}
+div#order2{
+    order: 2;
+}
+.app-icon{
+    margin:  0;
+}
+}

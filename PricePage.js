@@ -1,3 +1,6 @@
+// import navbar from "./deepak_camponants/navbar.js";
+// var nav_div = document.getElementById("navbar_div");
+// nav_div.innerHTML = navbar();
 
 var basic_price = document.getElementById("basic_price");
 var standard_price = document.getElementById("standard_price");
@@ -26,6 +29,7 @@ function getInput(){
         standard_price.innerText = `Rs. ${Standardyearly}/month -20%`
         professional_price.innerText = `Rs. ${Professionalyearly}/month -20%`
         enterprise_price.innerText = `Rs. ${Enterpriseyearly}/month -20%`
+        
     }
     else{
         basic_price.innerText = `Rs. ${BasicMon}/month`
@@ -36,9 +40,28 @@ function getInput(){
 
 }
 
-let Regester = document.getElementById("basicbtn").addEventListener("click", get)
-function get(){
+ const basic_total = document.getElementById("basicBtn").addEventListener("click", getBasic)
+function getBasic(){
     console.log("Buy")
+    localStorage.setItem("SubTotal",JSON.stringify(basic_price.innerText))
+}
+
+const standard_total = document.getElementById("standardBtn").addEventListener("click", getStandard)
+function getStandard(){
+    console.log("Buy")
+    localStorage.setItem("SubTotal",JSON.stringify(standard_price.innerText))
+}
+
+const professional_total = document.getElementById("professionalBtn").addEventListener("click", getprofessional)
+function getprofessional(){
+    console.log("Buy")
+    localStorage.setItem("SubTotal",JSON.stringify(professional_price.innerText))
+}
+
+const enterprise_total = document.getElementById("enterpriseBtn").addEventListener("click", getenterprise)
+function getenterprise(){
+    console.log("Buy")
+    localStorage.setItem("SubTotal",JSON.stringify(enterprise_price.innerText))
 }
 
 
