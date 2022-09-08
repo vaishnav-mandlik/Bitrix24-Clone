@@ -5,8 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
+    <link rel="stylesheet" href="payment.css">
 </head>
 <body>
-    <h1>Payment Page</h1>
+    
+    <div id="main">
+        <img id="logo" src="https://i0.wp.com/www.s9digital.com/wp-content/uploads/2018/11/Bitrix24-logo.png?ssl=1" alt="">
+        <div id="yourPlan"></div>
+        <input id="Fname" type="text" placeholder="First name"><br>
+        <input id="Lname" type="text" placeholder="Last name"><br>
+        <input id="email" type="email" placeholder="Email address">
+        <br>
+        <input id="card" type="text" placeholder="Card number">
+        <input id="cvv" type="text" placeholder="CVV">
+        <br>
+        <label>Card expire date:</label>
+        <input id="date"  type="date">
+        <br>
+        <button id="pay">Pay</button>
+
+    </div>
+   
 </body>
 </html>
+<script src="payment.js"></script>
