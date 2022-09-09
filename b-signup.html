@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SignUp</title>
+    <link rel="shortcut icon" href="./img/favicon.ico">
+    <script src="https://kit.fontawesome.com/df328465c2.js" crossorigin="anonymous"></script>
+
+  <style>
+    body{
+        margin: 0px;
+        padding: 0px;
+        line-height: 150%;
+    }
+    .left-half > img{
+        width: 90%;
+        position: absolute;
+        overflow: hidden;
+       
+        margin-bottom: 0px;
+      }
+
+      .left-half > a{
+        color: #50ddfa;
+        text-decoration: none;
+        margin-left:75% ;
+      }
+
+      .left-half > a{
+      
+      text-decoration: none;
+     
+      font-family: Montserrat-medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
+       margin-left: 75%;
+      margin-top: 64px;
+    
+      border: 0px;
+} 
+   /* a{
+    text-decoration: none;
+    color: white;
+   } */
+   #mainBox{
+      /* border: 2px solid chocolate; */
+      height: 100vh;
+   }
+  .left-half{
+    display: flex;
+    /* border: 2px dashed red; */
+    width: 42.3%;
+    height: 100vh;
+    position: relative;
+    position: sticky;
+   
+  }
+  .right-half{
+    /* border: 2px solid blue; */
+    width: 52%;
+    margin-left: 70px;
+    /* margin-left:  60px; */
+    overflow: scroll;
+    z-index: +2;
+  }
+  #mainBox{
+    display: flex;
+   
+  }
+  .title{
+    font-size: 29px;
+  
+    font-family: Montserrat-medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  }
+  .right-half > p{
+    margin-top: 80px;
+   color: #333333;
+  }
+  .right-half > hr{
+
+   background-color:#d1d4d8;
+   border: 1px solid #d1d4d8;
+    width:90%;
+    margin-left: 0%;
+  }
+  #userIp{
+    font-size: 20px;
+    margin-top: -2px;
+    font-family: Montserrat-medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+ 
+   #name{
+    width: 88%;
+    height: 50px;
+    margin: 10px;
+   }
+   #email{
+    width: 88%;
+    height: 50px;
+    margin: 10px;
+   }
+   #password{
+    width: 88%;
+    height: 50px;
+    margin: 10px;
+   }
+   input{
+    font-size: 20px;
+   }
+
+   #signup{
+    width: 30%;
+    height: 40px;
+    margin: 10px;
+    background-color: #9dcf00 ;
+    color: white;
+    border: none;
+    border-radius: 20px;
+
+   }
+   #signup:hover{
+    color: white;
+    background-color: #b0ea03;
+   }
+   .right-half > a{
+    text-decoration: none;
+    color: #333333;
+    font-size: 15px;
+    font-family:'Courier New', Courier, monospace;
+   }
+   #need{
+    justify-content: center;
+    text-align: center;
+    margin-top: -2px;
+  
+   }
+   #need>a{
+    /* text-decoration: none; */
+    /* color: #333333; */
+    /* font-size: 15pt; */
+    font-family: Montserrat-medium, "Helvetica Neue", Helvetica, Arial, sans-serif;
+   }
+   .social-container {
+	  margin: 20px 0;
+   }
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+    text-decoration: none;
+    margin-left: 30px;
+}
+
+#ls{
+    justify-content: center;
+    text-align: center;
+   
+}
+ a{
+    text-decoration: none;
+    color: darkblue;
+    /* font-size: 15pt; */
+    font-family:'Courier New', Courier, monospace;
+}
+
+
+
+  </style>
+  
+
+
+
+</head>
+<body>
+
+    <div id="mainBox">
+        <div class="left-half">
+         
+          <img src="./pic/bitrix II nd .png" alt="pic">
+          
+          <a href="google.com">________</a>
+                </div>
+            </article>
+            
+    <div class="right-half">
+        <p class="title">Bitrix24 SignUp</p>
+        <hr>
+  
+        <p id="userIp">Create Account</p>
+    <div id="media">
+        <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+           
+        </div>
+       
+
+    </div>
+     
+        <input type="text" id="name" placeholder="Enter name">
+        <input type="email" id="email" placeholder="Enter email or number">
+        <input type="password"  id="password" placeholder="Enter password">
+       
+        <button id="signup" onclick="signup()">Sign Up</button>
+    
+       
+            <a href="./b-login.html">Sign In?</a>
+
+        <br>
+         <hr>
+          <div id="need">
+            <a  href="google.com">Need help?</a>     
+          </div>
+              
+    </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="b-signup.js"></script>
+
