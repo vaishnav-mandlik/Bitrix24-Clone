@@ -4,6 +4,7 @@
   /* border: 2px solid white; */
   height: 670px;
   overflow: scroll;
+  /* display: none; */
 }
 * {
   padding: 0;
@@ -108,7 +109,8 @@ body {
 #addMsg {
   display: flex;
   flex-direction: column;
-  height: 120px;
+  height: 140px;
+  width: 745px;
   /* border: 2px solid white; */
   background-color: white;
 }
@@ -146,4 +148,16 @@ body {
   height: 40px;
   border-radius: 30px;
   background-color: white;
+}
+
+#addMsg1 {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 745px;
+  background-color: white;
+}
+
+.addMargin {
+  margin-top: 40px;
 }

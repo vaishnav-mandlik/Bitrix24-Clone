@@ -75,7 +75,10 @@
           </svg>
         </div>
         <div>
-          <p id="clock" class="text-[#fff] text-[30px] font-thin ml-9 mt-1"></p>
+          <p
+            id="clock"
+            class="text-[#fff] text-[30px] font-light ml-9 mt-1"
+          ></p>
         </div>
         <div class="flex">
           <img
@@ -129,6 +132,7 @@
             >
               Task and Project
             </p>
+
             <p
               class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
             >
@@ -161,7 +165,7 @@
 
         <div id="feed">
           <div id="addMsg" class="rounded-xl">
-            <div id="msgnames">
+            <div id="msgnames" class="mt-2">
               <p
                 id="msg"
                 class="ml-10 text-[#2067b0] font-semibold text-[14px] mt-1"
@@ -181,11 +185,15 @@
                 MORE
               </p>
             </div>
-            <p class="mt-[20px] ml-[30px] text-[20px] font-light text-[gray]">
+            <p
+              class="mt-[20px] ml-[30px] text-[20px] font-light text-[gray]"
+              id="sendMsg"
+            >
               Send message …
             </p>
           </div>
-          <div class="flex flex-row">
+
+          <div class="flex flex-row mt-[5px]" id="addExM">
             <p class="text-[white] font-thin mt-[20px] ml-[40px] text-[30px]">
               Feed
             </p>
@@ -228,8 +236,9 @@
               </svg>
             </div>
           </div>
+
           <div
-            class="w-[746px] bg-[#fff] h-[750px] mt-5 mb-[50px] rounded-xl rounded-xl"
+            class="w-[746px] bg-[#fff] h-[auto] mt-5 mb-[50px] rounded-xl rounded-xl"
           >
             <div class="flex flex-row">
               <img
@@ -283,19 +292,25 @@
                   More
                 </p>
               </div>
-              <div class="comment-box flex flex-row">
+              <div class="comment-box flex flex-row mb-7">
                 <img
                   class="ml-[5px] pt-[20px]"
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAACeElEQVRYhe3Yu2sUQQDH8U80YowaBRWjNiqeiI9EK2sDCpJaOwVBrawtRAQbhZBOEBTzT2i00sRGExvfj0Z8omKiIKjE+CAWeweXvb1jZveCCPnBVDvzne/uzszOLLOZzb9NS4G2HehFD7qxFkvL177gFe5jCFfxtUBfUdmIAXzHVGD5jksozaTYAvTjV4RYuvxEH9qaLVfCowJi6TKCVc2S24GxJspVylt0FZUrzZBctWRnXrkF4l7rS8lsvYmJiHYjmJ9HsD+wgzHsTbXdIHk6oZKnY+U2Cputv7GzDqMFxwIFv4p81QOB4MEA1nAg63yoXIfwRfhUAO94IOsbFqUbz8kA9qI98GZeB9T5EMhaWO57WrIEewKBsCKgzsoIXk3fWYLdEcBNTapTt+8swXURwLsBde5F8Gr6zhLsiADuxrwG1+dhTwRvSUilSXGfqwMNWAcjWT9CBMcjoY9lz/p2PIlkfQwRvBMJncK5DM65HJyRNCRrDD4IuYtUspaSmOWlbt9ZgkM5wDV3jtEcnBshlRYL+9RN4DL2NWDtxxVh26/MT129XGoAeocj4pajDhzF+wbcixE8JckBJw15iGUxoFSWS2Z9mjuJ9bGwvhTkD7YUkKtka5lVzT6bB9QmGfwVyFO0NkGwFc+quLfk3PKTHA2rt+7XsbqA3BrJKlHhvVHg0FRJl+mS4ziEuRGMVhzGp5TctqJylXSa/rqn8BwnsFn2P54WyZg9iReptrc14cmlM19y+vqmdhZ+kizMg+Uyis8Z9SZxRoExF5JOyQEnS7TRInxBjqWkyO+3RZIzxC5sl2w2q3+/vZRsVodxrSw5m9n8d/kL+vqsO8eROt0AAAAASUVORK5CYII="
                 />
                 <div class="mt-6 ml-[10px] mr-[30px] comment-input border">
-                  <p class="ml-5 mt-[8px] font-light text-[13px]">
-                    Add Comment
-                  </p>
+                  <input class="ml-3 mt-[2px] font-light text-[13px]" placeholder="Add Comment" style=" border: none; outline: 0">
+                    
+                </input>
+                <p class="pl-[350px] mt-2 cursor-pointer" >Add</p>
                 </div>
+                
               </div>
+              
+             
+              
             </div>
           </div>
+
           <div class="w-[746px] bg-[#fff] h-[750px] mt-5 mb-[50px] rounded-xl">
             <div class="flex flex-row">
               <img
@@ -355,13 +370,14 @@
                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAABmJLR0QA/wD/AP+gvaeTAAACeElEQVRYhe3Yu2sUQQDH8U80YowaBRWjNiqeiI9EK2sDCpJaOwVBrawtRAQbhZBOEBTzT2i00sRGExvfj0Z8omKiIKjE+CAWeweXvb1jZveCCPnBVDvzne/uzszOLLOZzb9NS4G2HehFD7qxFkvL177gFe5jCFfxtUBfUdmIAXzHVGD5jksozaTYAvTjV4RYuvxEH9qaLVfCowJi6TKCVc2S24GxJspVylt0FZUrzZBctWRnXrkF4l7rS8lsvYmJiHYjmJ9HsD+wgzHsTbXdIHk6oZKnY+U2Cputv7GzDqMFxwIFv4p81QOB4MEA1nAg63yoXIfwRfhUAO94IOsbFqUbz8kA9qI98GZeB9T5EMhaWO57WrIEewKBsCKgzsoIXk3fWYLdEcBNTapTt+8swXURwLsBde5F8Gr6zhLsiADuxrwG1+dhTwRvSUilSXGfqwMNWAcjWT9CBMcjoY9lz/p2PIlkfQwRvBMJncK5DM65HJyRNCRrDD4IuYtUspaSmOWlbt9ZgkM5wDV3jtEcnBshlRYL+9RN4DL2NWDtxxVh26/MT129XGoAeocj4pajDhzF+wbcixE8JckBJw15iGUxoFSWS2Z9mjuJ9bGwvhTkD7YUkKtka5lVzT6bB9QmGfwVyFO0NkGwFc+quLfk3PKTHA2rt+7XsbqA3BrJKlHhvVHg0FRJl+mS4ziEuRGMVhzGp5TctqJylXSa/rqn8BwnsFn2P54WyZg9iReptrc14cmlM19y+vqmdhZ+kizMg+Uyis8Z9SZxRoExF5JOyQEnS7TRInxBjqWkyO+3RZIzxC5sl2w2q3+/vZRsVodxrSw5m9n8d/kL+vqsO8eROt0AAAAASUVORK5CYII="
                 />
                 <div class="mt-6 ml-[10px] mr-[30px] comment-input border">
-                  <p class="ml-5 mt-[8px] font-light text-[13px]">
-                    Add Comment
-                  </p>
+                  <input class="ml-3 mt-[2px] font-light text-[13px]" placeholder="Add Comment" style=" border: none; outline: 0">
+                  <p class="pl-[350px] mt-2 cursor-pointer" >Add</p>
+                </input>
                 </div>
               </div>
             </div>
           </div>
+          <div id="postaddi"></div>
         </div>
         <div class="w-[250px] h-[658px] ml-2 mt-3">
           <div class="h-[80px] bg-[#fff] flex flex-row rounded-xl">
