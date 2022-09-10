@@ -1,0 +1,163 @@
+#feed {
+  margin-top: 10px;
+  width: 85%;
+  /* border: 2px solid white; */
+  height: 670px;
+  overflow: scroll;
+  /* display: none; */
+}
+* {
+  padding: 0;
+  margin: 0;
+  /* background-color: rgb(119, 119, 253); */
+}
+
+body {
+  background-image: url("https://b24-8q3mv5.bitrix24.in/bitrix/templates/bitrix24/themes/light/atmosphere/atmosphere2.jpg");
+  background-position: center top;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+  /* width: 900px; */
+}
+#nav {
+  display: flex;
+  height: 50px;
+  /* border: 2px solid white; */
+  /* z-index: 1000; */
+}
+#logo {
+  height: 37px;
+  padding-top: 15px;
+  margin-bottom: 4px;
+  margin-left: 20px;
+}
+#bar {
+  width: 30px;
+  height: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.header-logo-block-settings-item {
+  width: 30px;
+  height: 20px;
+
+  /* top: 50%; */
+  background-image: url(data:image/svg+xml;charset=US-ASCII,%3Csvg%20viewBox%3D%220%200%2013%2013%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M10.09.854l2.056%202.078-8.042%208.02L2.05%208.873l8.04-8.02zM.894%2011.846a.215.215%200%200%200%20.054.205c.054.054.132.075.206.054l2.297-.619L1.513%209.55l-.62%202.297z%22%20fill%3D%22%23FFF%22%20fill-rule%3D%22evenodd%22/%3E%3C/svg%3E);
+  background-repeat: no-repeat;
+}
+#pen {
+  margin-top: 18px;
+  margin-left: 100px;
+}
+#search {
+  display: flex;
+  width: 100px;
+  color: white;
+  height: 30px;
+  border-radius: 30px;
+  /* border: 1px solid white; */
+  background-color: rgba(255, 255, 255, 0.18);
+}
+#userSvg {
+  height: 50px;
+  margin-left: 180px;
+}
+#Upgrade {
+  height: 35px;
+  width: 120px;
+  border: 1px solid white;
+  margin-left: 80px;
+  margin-top: 10px;
+  background-color: #eba51c;
+  border-radius: 30px;
+}
+#Upgrade > p {
+  margin-left: 25px;
+  margin-top: 3px;
+}
+
+#Invite {
+  height: 35px;
+  width: 100px;
+  border: 1px solid white;
+  margin-left: 30px;
+  margin-top: 10px;
+  background-color: #14bfd5;
+  border-radius: 30px;
+}
+#Invite > p {
+  margin-left: 25px;
+  margin-top: 3px;
+}
+#sidebar {
+  width: 230px;
+}
+#sidebarIn {
+  border-radius: 10px;
+  width: 210px;
+}
+.sidebarText {
+  padding-left: 20px;
+  cursor: pointer;
+  font-weight: 200;
+  padding-top: 10px;
+}
+#main {
+  height: 200px;
+}
+#addMsg {
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  width: 745px;
+  /* border: 2px solid white; */
+  background-color: white;
+}
+/* #msg {
+  border-bottom: 2px solid black;
+} */
+#msgnames {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+  padding-top: 5px;
+  padding-bottom: 35px;
+  border-bottom: 2px solid rgb(181, 181, 181);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#search2 {
+  display: flex;
+  width: 220px;
+  color: gray;
+  height: 40px;
+  border-radius: 30px;
+  background-color: white;
+}
+#border-bottom {
+  border-bottom: 1px solid gray;
+  margin-right: 30px;
+  margin-top: -20px;
+}
+.comment-input {
+  display: flex;
+  width: 700px;
+  color: gray;
+  height: 40px;
+  border-radius: 30px;
+  background-color: white;
+}
+
+#addMsg1 {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  width: 745px;
+  background-color: white;
+}
+
+.addMargin {
+  margin-top: 40px;
+}

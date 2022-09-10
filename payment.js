@@ -18,7 +18,7 @@ function payment(){
  else{
      console.log("clicked")
      alert("Payment Successful")
-     location.href = "index.html"
+     location.href = "stream.html"
  }
  
 }
