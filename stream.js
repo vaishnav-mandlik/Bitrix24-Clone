@@ -1,5 +1,5 @@
 let postData = JSON.parse(localStorage.getItem("postData")) || [];
-
+let time = 1;
 let clock = document.getElementById("clock");
 function currentTime() {
   let date = new Date();
@@ -19,7 +19,7 @@ function currentTime() {
   hh = hh < 10 ? "0" + hh : hh;
   mm = mm < 10 ? "0" + mm : mm;
 
-  let time = hh + ":" + mm + " " + session;
+  time = hh + ":" + mm + " " + session;
   clock.innerText = time;
 
   let t = setTimeout(function () {
@@ -119,7 +119,7 @@ function showPost() {
 
   let getdata = async () => {
     try {
-      let res = await fetch("http://localhost:3000/posts");
+      let res = await fetch("https://bitrix24-clone-api.herokuapp.com/posts");
       data = await res.json();
 
       console.log(data, "josn");
@@ -135,10 +135,10 @@ function showPost() {
                   />
                   <div class="flex flex-col">
                     <p class="text-[#2067b0] font-bold mt-[28px] ml-[10px]">
-                      User Name
+                      Deepak Vats
                     </p>
                     <p class="text-[gray] font-light text-[12px] ml-[10px]">
-                      3 September 12:48 pm
+                      10 September ${el.ctime}
                     </p>
                     <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
                   </div>
@@ -214,7 +214,7 @@ function showPost() {
               <p
                 class="text-[#2067b0] font-bold text-[14px] mt-[10px] ml-[1px]"
               >
-               User Name
+               Deepak Vats
               </p>
               <p class="text-[black] font-light text-[14px] ml-[5px]">
                 ${commentEtr}
@@ -248,12 +248,12 @@ function onClickBtn() {
   let YTR = ytLink.split("https://www.youtube.com/watch?v=").join("");
   let setData = async () => {
     try {
-      let res = await fetch("http://localhost:3000/posts", {
+      let res = await fetch("https://bitrix24-clone-api.herokuapp.com/posts", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ ytLink: YTR, userText: userText }),
+        body: JSON.stringify({ ytLink: YTR, userText: userText, ctime: time }),
       });
       // let data = await res.json();
     } catch (error) {
