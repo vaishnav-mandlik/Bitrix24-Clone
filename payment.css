@@ -1,0 +1,66 @@
+body{
+    background-color: #37b3f3;
+}
+#logo{
+    width: 250px;
+    display: block;
+    margin: auto;
+    
+    margin-bottom: 20px;
+
+    
+}
+#main{
+    background-color: white;
+    
+    
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 370px;
+    margin: auto;
+    margin-top: 50px;
+    font-size: 18px;
+    padding: 30px;
+}
+input{
+    height: 30px;
+    margin: 10px;
+    width: 320px;
+    padding: 0px 10px;
+    font-size: 12px;
+    color: black;
+    /* font-weight: bold; */
+    
+    
+}
+#card{
+    width: 200px ;
+
+}
+#cvv{
+    width: 70px;
+}
+#date{
+    width: 160px;
+    font-size: 15px;
+}
+#pay{
+    width: 250px;
+    height: 30px;
+    margin: 10px;
+    border: 0;
+    color: white;
+    display: block;
+    background-color: blue;
+    margin: 10px 50px;
+    
+   
+}
+label{
+    margin-left: 10px;
+}
+#yourPlan{
+    color: green;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
