@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="icon"
+      href="https://dashboard.snapcraft.io/site_media/appmedia/2019/02/logo.svg.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="stream.js"></script>
+
+    <link rel="stylesheet" href="stream.css" />
+    <title>Task and project</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+     #table{
+          margin: 10px 0 ;
+          background-color: white;
+          /* border: 1px solid black; */
+          border-radius: 10px;
+          width: 99%;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+         
+
+     }
+     thead{
+      /* border: 1px solid black; */
+      font: weight 600;
+      font-size: 16px;
+      padding: 10px;
+     }
+     th{ 
+      /* border: 1px solid black; */
+      padding: 10px;
+
+
+     }
+     td{
+      /* border: 1px solid black; */
+      text-align: center;
+      padding: 5px;
+      
+     }
+     .taskForm{
+       
+          background-color: white;
+          /* border: 1px solid black; */
+          border-radius: 10px;
+          width: 99%;
+          /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+          margin: auto;
+          display: flex;
+          justify-content: center;
+
+     }
+     input{
+      width: 14%;
+      margin: 10px;
+      padding: 10px;
+      border: 0.3px solid gray;
+     }
+
+    </style>
+
+
+
+
+  </head>
+
+
+  <body>
+    <div id="main">
+      <div id="nav">
+        <img
+          id="bar"
+          src="https://img.icons8.com/color/48/000000/menu--v4.png"
+        />
+
+        <img
+          id="logo"
+          src="https://www.bitrix24.net/bitrix/templates/new/images/bitrix24-logo-en.svg"
+          alt=""
+        />
+        <div id="pen" class="header-logo-block-settings-item"></div>
+        <div id="search" class="mt-3 ml-5">
+          <p class="ml-4 mt-[2px]">find</p>
+          <svg
+            class="ml-7 mt-1"
+            id="seachSvg"
+            xmlns="http://www.w3.org/2000/svg"
+            x="0px"
+            y="0px"
+            width="20"
+            height="20"
+            viewBox="0 0 172 172"
+            style="fill: #000000"
+          >
+            <g
+              fill="none"
+              fill-rule="nonzero"
+              stroke="none"
+              stroke-width="1"
+              stroke-linecap="butt"
+              stroke-linejoin="miter"
+              stroke-miterlimit="10"
+              stroke-dasharray=""
+              stroke-dashoffset="0"
+              font-family="none"
+              font-weight="none"
+              font-size="none"
+              text-anchor="none"
+              style="mix-blend-mode: normal"
+            >
+              <path d="M0,172v-172h172v172z" fill="none"></path>
+              <g fill="#ffffff">
+                <path
+                  d="M72.24,10.32c-32.33062,0 -58.48,26.14938 -58.48,58.48c0,32.33063 26.14938,58.48 58.48,58.48c11.54281,0 22.22563,-3.38625 31.2825,-9.1375l42.2475,42.2475l14.62,-14.62l-41.71,-41.6025c7.49813,-9.83625 12.04,-22.02406 12.04,-35.3675c0,-32.33062 -26.14937,-58.48 -58.48,-58.48zM72.24,24.08c24.76531,0 44.72,19.95469 44.72,44.72c0,24.76531 -19.95469,44.72 -44.72,44.72c-24.76531,0 -44.72,-19.95469 -44.72,-44.72c0,-24.76531 19.95469,-44.72 44.72,-44.72z"
+                ></path>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <p id="clock" class="text-[#fff] text-[30px] font-thin ml-9 mt-1"></p>
+        </div>
+        <div class="flex">
+          <img
+            id="userSvg"
+            src="data:image/png;base64,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"
+          />
+          <h2 class="text-[#fff] mt-[12px] ml-4">User Name</h2>
+        </div>
+        <div id="Upgrade" class="text-[#fff] ml-[50px]">
+          <p>Upgrade</p>
+        </div>
+        <div id="Invite" class="text-[#fff]">
+          <p>Invite</p>
+        </div>
+      </div>
+
+      <!-- sideBar -->
+      <div class="flex flex-row">
+        <div id="sidebar" class="h-[669px]">
+          <div id="sidebarIn" class="ml-2 mt-2 bg-[rgba(255,255,255,.1)]">
+            <p class="text-[#fff] font-thin pl-2 pt-2 hover:bg-gray-700">
+              Collbration ^
+            </p>
+            <p class="text-[#fff] pl-3 pt-3  hover:bg-[rgba(255,255,255,.3)]">
+              
+               <a href="stream.html" class="ml-3">feed</a> 
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Chat and Call
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Calender
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Online Documnet
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Bitrix24 Drive
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2">
+              Webmail
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Workgroups
+            </p>
+          </div>
+          <div>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+             <a href="./Tasks-and-projects.html" ><p class="text-[#fff] sidebarText  mt-2 ml-2 rounded-xl mr-2 bg-[rgba(255,255,255,.4)]"> <span class="  p-2 font-normal" > Task and Project </span> </p></a>
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              CRM
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              Marketing
+            </p>
+            <p
+              class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 ml-2 rounded-xl mr-2"
+            >
+              Company
+            </p>
+          </div>
+          <div id="sidebarIn" class="ml-2 mt-2 bg-[rgba(255,255,255,.1)] mt-4">
+            <p class="text-[#fff] font-thin pl-2 pt-2 hover:bg-gray-700">
+              Applications
+            </p>
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Market
+            </p>
+
+            <p class="text-[#fff] sidebarText hover:bg-gray-500 mt-2 pb-2">
+              Developer Resources
+            </p>
+          </div>
+        </div>
+
+        <div id="feed" >
+          <div id="addMsg" class="rounded-xl ml-4 ">
+            <div id="msgnames" class="">
+              <p
+                id="msg"
+                class="ml-10 text-[#2067b0] font-semibold text-[14px] mt-1"
+              >
+                TASKS
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                ONGOING
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                ASSISTING
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                FOLLOWING
+              </p>
+              <p class="ml-14 text-[gray] font-semibold text-[14px] mt-1">
+                PROJECTS
+              </p>
+            </div>
+            
+          </div>
+    
+            <div id="nav"></div>   
+                    <h3 style="color: gray;">My Tasks &#9733;</h3>
+                <div id="h-content">
+            <table id="table" >
+                    <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Active</th>
+                        <th>Deadline</th>
+                        <th>Createdby</th>
+                        <th>Responsiable person</th>
+                        <th>Action</th>
+                      
+                      </tr>
+                  </thead>
+              
+            <!-- put your data tbody  -->
+              <tbody id="table-body" >
+                    
+                    </tbody>
+
+
+                </table>
+              
+            </div>
+
+          <div class="taskForm" >
+          
+            <input type="number" name="tID" id="tID" placeholder="ID"> 
+            <input type="text" name="tName" id="tName" placeholder="Task name ">
+            <input type="date" name="tDate" id="tDate" placeholder="Active date">
+            <input type="date" name="tDeadline" id="tDeadline" placeholder="Deadline">
+            <input type="text" name="tManager" id="tManager" placeholder="Manager">
+            <input type="text" name="tAssign" id="tAssign" placeholder="Assign to">
+
+            <button id="taskSbtn" onclick="addTask()">Submit</button>
+          
+
+                  </div>
+
+
+
+
+           
+
+              </div>
+              <div class="w-[250px] h-[658px] ml-2 mt-3">
+                <div class="h-[80px] bg-[#fff] flex flex-row rounded-xl">
+                  <img
+                    class="h-[60px] mt-2 m-3"
+                    src="https://b24-8q3mv5.bitrix24.in/bitrix/components/bitrix/intranet.ustat.online/templates/.default/images/intranet-ustat-online-circle.gif"
+                    alt=""
+                  />
+                  <p class="absolute mt-3 text-[30px] ml-8">1</p>
+                  <img
+                    class="ml-[5px] pt-[20px] w-[30px] h-[50px]"
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAABKUlEQVQ4jdXTsS9DURTH8U8pFgn/AHZt/wx/gZiEDmarmYGNaCrs/BnFKLF00JqYrBIEi4TU8G7l5vW+YuMkZzjnfs/vvvPOufxnq6GBLl6Dd7GP6m+EJnCID/QK/B0HGP+J2PkQobyffSd6lCi6wjo28JY4bxaJ1RJtPmA6YmbxmGi/0gdGIngtF8MlnqL4Dhc5ZjTUDgguJL56MpGbSuS+amPBmQQ4hlIUl0Iub3OJnGfpSS5GzFIB85wSvC6A2xHTLmA6fSBuuZW45B7HUXwScnlL1arKVqAne2arKCe4MuqB6a/NfEqQ7Dn1sFkERLYV2MYwaBynsoVeNriXQm5FtuAt6akPiDZlrdxgW9ZiHTu4DWeNn4jFVsGebIIvwTvYNeSf/X37BIM+biKf3mYSAAAAAElFTkSuQmCC"
+                  />
+                </div>
+                <div
+                  class="h-[40px] w-full bg-[#2fc7f7] mt-4 flex flex-row rounded-xl"
+                >
+                  <p class="font-bold text-[14px] ml-[5px] mt-2 text-[#fff]">
+                    COMPANY PULSE
+                  </p>
+                  <div class="bg-[#fff] m-1 w-[55px]">
+                    <p class="text-[#000] ml-[20px] mt-1">0</p>
+                  </div>
+                  <div class="bg-[#fff] my-1 mr-[1px] w-[55px]">
+                    <p class="text-[#2fc7f7] ml-[12px] mt-1">0%</p>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="h-[40px] w-full bg-[#2fc7f7] mt-4 flex flex-row rounded-t-xl"
+                  >
+                    <p class="font-bold text-[13px] ml-[30px] mt-2 text-[#fff]">
+                      MY TASKS
+                    </p>
+                  </div>
+                  <div
+                    class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+                  >
+                    <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                      Ongoing
+                    </p>
+                    <p class="text-[#000] ml-[51%] mt-1 text-[20px] font-light">0</p>
+                  </div>
+                  <div
+                    class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+                  >
+                    <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                      Assisting
+                    </p>
+                    <p class="text-[#000] ml-[50%] mt-1 text-[20px] font-light">0</p>
+                  </div>
+                  <div
+                    class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00]"
+                  >
+                    <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                      Set by me
+                    </p>
+                    <p class="text-[#000] ml-[48%] mt-1 text-[20px] font-light">0</p>
+                  </div>
+                  <div
+                    class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00] rounded-b-xl"
+                  >
+                    <p class="font-light text-[13px] ml-[30px] mt-2 text-[gray]">
+                      Following
+                    </p>
+                    <p class="text-[#000] ml-[49%] mt-1 text-[20px] font-light">0</p>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="h-[40px] w-full bg-[#47e4c2] mt-4 flex flex-row rounded-t-xl"
+                  >
+                    <p class="font-bold text-[13px] ml-[30px] mt-2 text-[#fff]">
+                      POPULAR POSTS
+                    </p>
+                  </div>
+      
+                  <div
+                    class="h-[80px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00] rounded-b-xl"
+                  >
+                    <img
+                      class="ml-[10px] mt-[10px] w-[50px] h-[50px] ml-["
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAABKUlEQVQ4jdXTsS9DURTH8U8pFgn/AHZt/wx/gZiEDmarmYGNaCrs/BnFKLF00JqYrBIEi4TU8G7l5vW+YuMkZzjnfs/vvvPOufxnq6GBLl6Dd7GP6m+EJnCID/QK/B0HGP+J2PkQobyffSd6lCi6wjo28JY4bxaJ1RJtPmA6YmbxmGi/0gdGIngtF8MlnqL4Dhc5ZjTUDgguJL56MpGbSuS+amPBmQQ4hlIUl0Iub3OJnGfpSS5GzFIB85wSvC6A2xHTLmA6fSBuuZW45B7HUXwScnlL1arKVqAne2arKCe4MuqB6a/NfEqQ7Dn1sFkERLYV2MYwaBynsoVeNriXQm5FtuAt6akPiDZlrdxgW9ZiHTu4DWeNn4jFVsGebIIvwTvYNeSf/X37BIM+biKf3mYSAAAAAElFTkSuQmCC"
+                    />
+                    <div class="flex flex-col">
+                      <p
+                        class="text-[#2067b0] font-bold text-[14px] mt-[10px] ml-[5px]"
+                      >
+                        cisaxo3491@1uscare.com
+                      </p>
+                      <p class="text-[blue] font-light text-[12px] ml-[10px]">
+                        Welcome To Bitrix
+                      </p>
+                      <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div
+                    class="h-[40px] w-full bg-[#47e4c2] mt-4 flex flex-row rounded-t-xl"
+                  >
+                    <p class="font-bold text-[14px] ml-[19px] mt-2 text-[#fff]">
+                      DESKTOP CLIENT
+                    </p>
+                  </div>
+      
+                  <div
+                    class="h-[40px] w-full bg-[#fff] flex flex-row border-b-2 border-[#00] rounded-b-xl"
+                  >
+                    <div class="flex flex-row">
+                      <p
+                        class="text-[gray] font-bold text-[14px] mt-[10px] ml-[20px]"
+                      >
+                        MAC OS
+                      </p>
+                      <p
+                        class="text-[gray] font-bold text-[14px] mt-[10px] ml-[20px]"
+                      >
+                        WINDOWS
+                      </p>
+                      <!-- <p class="font-bold p-2">Welcome to Bitrix24!</p> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </body>
+</html>
+
+
+
+<style>
+
+#nav{
+    display: flex;
+}
+
+</style>
+
+
+<script>
+   var arr = JSON.parse(localStorage.getItem("task")) || [];
+    display(arr);
+   function addTask(){
+
+    var obj = {
+      tID: document.getElementById("tID").value,
+      tName: document.getElementById("tName").value,
+      tDate : document.getElementById("tDate").value,
+      tDeadline : document.getElementById("tDeadline").value,
+      tManager: document.getElementById("tManager").value,
+      tAssign: document.getElementById("tAssign").value
+    }
+    arr.push(obj)
+    console.log(obj)
+    localStorage.setItem("task", JSON.stringify(arr))
+    display(arr);
+    // document.querySelector("#table-body").append(tID, tName, tDate,tDeadline,tManager,tAssign);
+   }
+   function display(data){
+    document.querySelector("#table-body").innerText = "";
+    data.map(function(element,index){
+      
+      var tr = document.createElement("tr");
+      var td1 = document.createElement("td");
+      var td2 = document.createElement("td");
+      var td3 = document.createElement("td");
+      var td4 = document.createElement("td");
+      var td5 = document.createElement("td");
+      var td6 = document.createElement("td");
+      var td7 = document.createElement("td");
+      
+      
+      td1.innerText= element.tID;
+      td2.innerText= element.tName;
+      td3.innerText= element.tDate;
+      td4.innerText= element.tDeadline;
+      td5.innerText= element.tManager;
+      td6.innerText= element.tAssign;
+      td7.innerText= "Delete";
+    
+     
+        td7.style.color = "red";
+
+        td7.addEventListener("click", function(){
+         deleteTask(index)
+     });
+   tr.append(td1, td2, td3, td4, td5, td6, td7);
+   document.querySelector("#table-body").append(tr);
+   });
+   }
+   function deleteTask(index){
+        arr.splice(index, 1);
+        display(arr);
+        localStorage.setItem("task",JSON.stringify(arr));
+    }
+
+</script>
